@@ -1,0 +1,46 @@
+'''3.回文数'''  # 对字符串，有反转效果的reversed, [::-1](更快，比reversed简单)
+'''my method'''
+# class Solution(object):
+#     def isPalindrome(self, x):
+#         s = str(x)
+#         t = ''
+#         if s[0] == '-':
+#             return False
+#         else:
+#             # for i in reversed(s):
+#             #     t += i
+#             r = s[::-1]
+#             r = int(r)
+#             if r == x:
+#                 return True
+#             if x < (-2) ** 31 or x > 2 ** 31 - 1 or r != x:
+#                 return False
+# print(Solution().isPalindrome(-121))  # 函数中是return的，用print来显示结果
+'''easy method'''
+# class Solution(object):
+#     def isPalindrome(self, x):
+#         return True if x >= 0 and x == int(str(x)[::-1]) else False
+# print(Solution().isPalindrome(-121))
+'''不转换成字符串的做法：使用log计算x的位数'''
+# def isPalindrome(x: int) -> bool:
+#     """
+#     只反转后面一半的数字!!(节省一半的时间)
+#     """
+#     if x < 0 or (x != 0 and x % 10 == 0):  # 负数和个位是0的数一定不是回文数
+#         return False
+#     elif x == 0:
+#         return True
+#     else:
+#         import math
+#         length = int(math.log(x, 10)) + 1  # 判断有多少位
+#         reverse_x = 0
+#         for i in range(length // 2):  # 取一半，并反转
+#             remainder = x % 10
+#             x = x // 10
+#             reverse_x = reverse_x * 10 + remainder
+#         # 当x为奇数时, 只要满足 reverse_x == x//10 即可
+#         if reverse_x == x or reverse_x == x // 10:
+#             return True
+#         else:
+#             return False
+# isPalindrome(12321)
